@@ -11,9 +11,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'jysz0yjh0)k*m9*1min7%u8e8cej^be(t4zh&pbap&a)14fg%6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -73,11 +73,21 @@ WSGI_APPLICATION = 'marketreview.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+#DATABASES = {
+#    'default': {
+#      'ENGINE': 'django.db.backends.sqlite3',
+#      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# }
+#}
+
+DATABASES = {                                                                    
+    'default': {                                                                 
+        'ENGINE': 'django.db.backends.postgresql',                               
+        'NAME': 'marketreviewdb',                                       
+        'HOST': 'market-review-dbserver.postgres.database.azure.com',                                           
+        'USER': 'wert@market-review-dbserver',
+        'PASSWORD': 'Polywin8240762',
+    }                                                                            
 }
 
 
