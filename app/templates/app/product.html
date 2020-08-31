@@ -1,0 +1,184 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<style>
+
+a { color:#000; text-decoration:none; }
+
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+}
+
+#myCarousel .list-inline {
+    white-space:nowrap;
+    overflow-x:auto;
+}
+
+#myCarousel .carousel-indicators {
+    position: static;
+    left: initial;
+    width: initial;
+    margin-left: initial;
+}
+
+#myCarousel .carousel-indicators > li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+}
+
+#myCarousel .carousel-indicators > li.active img {
+    opacity: 0.7;
+}
+
+</style>
+
+
+  <main class="mt-5 pt-2" style="margin-top:150px;">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn" >
+
+        <!--Grid column -->
+		<div class="col-12 justify-content-center">
+			
+
+<div class="row">
+        <div class="col-8" id="slider" style="margin-top:50px;">
+            <div id="myCarousel" class="carousel slide shadow">
+			
+                <!-- main slider carousel items -->
+                <div class="carousel-inner">
+                    <div class="active carousel-item" data-slide-number="0">
+                        <img src="{{ object.image.url }}" class="img-fluid" alt="..">
+                    </div>
+                    <div class="carousel-item" data-slide-number="1">
+                        <img src="{{ object.image2.url }}" class="img-fluid" alt="..">
+                    </div>
+                    <div class="carousel-item" data-slide-number="2">
+                        <img src="{{ object.image3.url }}" class="img-fluid" alt="..">
+                    </div>
+                    <div class="carousel-item" data-slide-number="3">
+                        <img src="{{ object.image4.url }}" class="img-fluid" alt="..">
+                    </div>
+
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+				
+                <!-- main slider carousel nav controls -->
+
+
+                <ul class="carousel-indicators list-inline mx-auto border px-2">
+                    <li class="list-inline-item active">
+                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
+                            <img src="{{ object.image.url }}" class="img-fluid" alt="..">
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
+                            <img src="{{ object.image2.url }}" class="img-fluid" alt="..">
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
+                            <img src="{{ object.image3.url }}" class="img-fluid" alt="..">
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a id="carousel-selector-3" data-slide-to="3" data-target="#myCarousel">
+                            <img src="{{ object.image4.url }}" class="img-fluid" alt="..">
+                        </a>
+                    </li>
+  
+                </ul>
+            </div>
+        </div>
+		
+<div class="col-4" style="margin-top:100px;">
+
+			<div class="mb-3">
+              <a href="/{{object.get_category_display.lower}}/">
+                <h4><span class="badge badge-pill purple">{{ object.get_category_display }}</span></h4>
+              </a>
+            </div>
+			
+						<p class="lead">
+				<h4 class="font-weight-bold blue-text">
+					<strong>
+						  {% if object.discount_price %}
+						  
+						  <span class="mr-1">
+							<del style="color:gray;" ><h4>${{ object.price }}</h4></del>
+						  </span>
+						  
+						  <span><h3>${{ object.discount_price }}</h3></span>
+						  
+						  {% else %}
+						  
+						  <span style="font-weight:bold;"><h3>${{ object.price }}</h3></span>
+						  
+						  {% endif %}
+					</strong>
+				</h4>
+			</p>
+			<div style="font-size:1.5em;" >
+			{{object.intro_description}}
+			</div>
+</div>
+
+</div>
+
+    <!--/main slider carousel-->
+
+
+		</div>
+
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-12 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+		 
+
+<p class="lead font-weight-bold"><strong><h3>Description :</h3></strong></p>
+
+    <p style="font-size:2em;">{{ object.description }}</p>
+	
+	<div class="bd-callout bd-callout-info" style="font-size:2em;">
+	{{ object.callout }}
+	<a class="btn btn-primary" href="{{ object.Buy_url }}" target="_blank"><strong>Go To Official Website</strong></a>
+	</div>
+	
+	<p style="font-size:2em;">{{ object.extra_description }}</p>
+	
+<a href="{{ object.Buy_url }}" target="_blank"><button class="btn " style="background-color:#B38B20;"  ><strong>GET IT on Official Website</strong></button></a>
+
+
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+	  
+</div>
+    </div>
+
+
+  </main>
+
+{% endblock content %}
